@@ -2,7 +2,7 @@ import * as  bodyParser from 'body-parser';
 import * as express from 'express';
 import * as _ from 'lodash';
 import {
-    Block, generateNextBlock, generatenextBlockWithTransaction, generateRawNextBlock, getAccountBalance,
+    Block, getNumOfBlock, generateNextBlock, generatenextBlockWithTransaction, generateRawNextBlock, getAccountBalance,
     getBlockchain, getMyUnspentTransactionOutputs, getUnspentTxOuts, sendTransaction
 } from './blockchain';
 import {connectToPeers, getSockets, initP2PServer} from './p2p';
@@ -80,6 +80,11 @@ const initHttpServer = (myHttpPort: number) => {
         const balance: number = getAccountBalance();
         res.send({'balance': balance});
     });
+
+	app.get('/number', (req,res) => {
+		const place: number = getNumOfBlock();
+		res.send({'number': place});
+	});
 
     app.get('/address', (req, res) => {
         const address: string = getPublicFromWallet();

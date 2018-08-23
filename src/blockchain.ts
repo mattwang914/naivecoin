@@ -60,6 +60,8 @@ const setUnspentTxOuts = (newUnspentTxOut: UnspentTxOut[]) => {
 
 const getLatestBlock = (): Block => blockchain[blockchain.length - 1];
 
+const getNumOfBlock = (): number =>  blockchain.length
+
 // in seconds
 const BLOCK_GENERATION_INTERVAL: number = 10;
 
@@ -292,7 +294,7 @@ const handleReceivedTransaction = (transaction: Transaction) => {
 };
 
 export {
-    Block, getBlockchain, getUnspentTxOuts, getLatestBlock, sendTransaction,
+    Block, getNumOfBlock, getBlockchain, getUnspentTxOuts, getLatestBlock, sendTransaction,
     generateRawNextBlock, generateNextBlock, generatenextBlockWithTransaction,
     handleReceivedTransaction, getMyUnspentTransactionOutputs,
     getAccountBalance, isValidBlockStructure, replaceChain, addBlockToChain
